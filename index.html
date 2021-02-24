@@ -1,683 +1,583 @@
-/*===== GOOGLE FONTS =====*/
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-
-/*===== VARIABLES CSS =====*/
-:root {
-  --header-height: 3rem;
-
-  /*========== Colors ==========*/
-  --title-color: #0B0A0A;
-  --text-color: #403A3A;
-  --text-color-light: #707070;
-  --container-color: #FAFAFA;
-  --container-color-alt: #F0EFEF;
-  --body-color: #FCFCFC;
-
-  /*========== Font and typography ==========*/
-  --body-font: 'Poppins', sans-serif;
-  --h1-font-size: 1.5rem;
-  --h2-font-size: 1.25rem;
-  --h3-font-size: 1rem;
-  --normal-font-size: .938rem;
-  --small-font-size: .875rem;
-  --smaller-font-size: .813rem;
-
-  /*========== Font weight ==========*/
-  --font-medium: 500;
-  --font-semi-bold: 600;
-
-  /*========== Margenes ==========*/
-  --mb-1: .5rem;
-  --mb-2: 1rem;
-  --mb-3: 1.5rem;
-
-  /*========== z index ==========*/
-  --z-tooltip: 10;
-  --z-fixed: 100;
-}
-
-/*========== BASE ==========*/
-*,::before,::after {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-/*========== Variables Dark theme ==========*/
-body.dark-theme {
-  --title-color: #F2F2F2;
-  --text-color: #BFBFBF;
-  --container-color: #212121;
-  --container-color-alt: #181616;
-  --body-color: #2B2B2B;
-}
-
-/*========== Button Dark/Light ==========*/
-.change-theme {
-  position: absolute;
-  right: 0;
-  top: 2.2rem;
-  display: flex;
-  color: var(--text-color);
-  font-size: 1.2rem;
-  cursor: pointer;
-}
-
-.change-theme:hover {
-  color: var(--title-color);
-}
-
-/*========== Font size variables to scale cv ==========*/
-body.scale-cv {
-  --h1-font-size: .938rem;
-  --h2-font-size: .938rem;
-  --h3-font-size: .875rem;
-  --normal-font-size: .813rem;
-  --small-font-size: .75rem;
-  --smaller-font-size: .688rem;
-}
-
-/*========== Generate PDF button ==========*/
-.generate-pdf {
-  display: none;
-  position: absolute;
-  top: 2.2rem;
-  left: 0;
-  font-size: 1.2rem;
-  color: var(--text-color);
-  cursor: pointer;
-}
-
-.generate-pdf:hover {
-  color: var(--title-color);
-}
-
-/*========== Classes modified to reduce size and print on A4 sheet ==========*/
-.scale-cv .change-theme,
-.scale-cv .generate-pdf {
-  display: none;
-}
-
-.scale-cv .bd-container {
-  max-width: 968px;
-}
-
-.scale-cv .section {
-  padding: 1.5rem 0 .80rem;
-}
-
-.scale-cv .section-title {
-  margin-bottom: .75rem;
-}
-
-.scale-cv .resume__left,
-.scale-cv .resume__right {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 0 1rem 0.1rem;
-}
-
-.scale-cv .home__img {
-  width: 90px;
-  height: 90px;
-}
-
-.scale-cv .home__container {
-  gap: 1.5rem;
-}
-
-.scale-cv .home__data {
-  gap: .25rem;
-}
-
-.scale-cv .home__address,
-.scale-cv .social__container {
-  gap: .75rem;
-}
-
-.scale-cv .home__icon,
-.scale-cv .social__icon,
-.scale-cv .interests__icon {
-  font-size: 1rem;
-}
-
-.scale-cv .education__container,
-.scale-cv .experience__container,
-.scale-cv .certificate__container {
-  gap: 1rem;
-}
-
-.scale-cv .education__time,
-.scale-cv .experience__time {
-  padding-right: .5rem;
-}
-
-.scale-cv .education__rounder,
-.scale-cv .experience__rounder {
-  width: 11px;
-  height: 11px;
-  margin-top: .22rem;
-}
-
-.scale-cv .education__line,
-.scale-cv .experience__line {
-  width: 1px;
-  height: 110%;
-  transform: translate(5px, 0);
-}
-
-.scale-cv .education__data,
-.scale-cv .experience__data {
-  gap: .25rem;
-}
-
-.scale-cv .skill__name {
-  margin-bottom: var(--mb-1);
-}
-
-.scale-cv .interests__container {
-  column-gap: 2.5rem;
-}
-
-body {
-  margin: 0 0 var(--header-height) 0;
-  padding: 0;
-  font-family: var(--body-font);
-  font-size: var(--normal-font-size);
-  background-color: var(--body-color);
-  color: var(--text-color);
-}
-
-h1,h2,h3,ul,p {
-  margin: 0;
-}
-
-h1,h2,h3 {
-  color: var(--title-color);
-  font-weight: var(--font-medium);
-}
-
-ul {
-  padding: 0;
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-/*========== CLASS CSS ==========*/
-.section {
-  padding: 1.5rem 0;
-}
-
-.section-title {
-  font-size: var(--h2-font-size);
-  color: var(--title-color);
-  font-weight: var(--font-semi-bold);
-  text-transform: uppercase;
-  letter-spacing: .35rem;
-  text-align: center;
-  margin-bottom: var(--mb-3);
-}
-
-/*========== LAYOUT ==========*/
-.bd-container {
-  max-width: 968px;
-  width: calc(100% - 3rem);
-  margin-left: var(--mb-3);
-  margin-right: var(--mb-3);
-}
-
-.bd-grid {
-  display: grid;
-  gap: 1.5rem;
-}
-
-.l-header {
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: var(--z-fixed);
-  background-color: var(--body-color);
-  box-shadow: 0 -1px 4px rgba(0,0,0,.1);
-  transition: .3s;
-}
-
-/*========== NAV ==========*/
-.nav {
-  height: var(--header-height);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav__logo,
-.nav__toggle {
-  color: var(--title-color);
-  font-weight: var(--font-medium);
-}
-
-.nav__toggle {
-  cursor: pointer;
-}
-
-.nav__item {
-  text-align: center;
-}
-
-.nav__list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-}
-
-.nav__link {
-  display: flex;
-  flex-direction: column;
-  font-size: var(--smaller-font-size);
-  color: var(--text-color-light);
-  font-weight: var(--font-medium);
-}
-
-.nav__link:hover {
-  color: var(--title-color);
-}
-
-.nav__icon {
-  font-size: 1.2rem;
-  margin-bottom: var(--mb-1);
-}
-
-.bx-info-circle,
-.bx-category-alt {
-  font-size: 1.2rem;
-}
-
-/*icons tooltip*/
-.social__content {
-  position: relative;
-  /*padding: .5rem;*/
-  cursor: pointer;
-}
-
-.info {
-  text-align: center;
-  width: 75vw;
-  opacity: 0;
-  position: absolute;
-  padding: .5rem 1rem;
-  font-weight: var(--font-medium);
-  border-radius: .5rem;
-  pointer-events: none;
-}
-
-.info,
-.info::after {
-  background-color: var(--container-color-alt);
-
-}
-
-.info::after {
-  content: '';
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  border-radius: 3px;
-}
-
-.social__content,
-.info {
-  transition: .3s;
-}
-
-/*tooltip top*/
-.social__tooltip-top {
-  top: -2.25rem;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.social__tooltip-top::after {
-  left: 50%;
-  transform: translate(-50%, 50%) rotate(45deg);
-  bottom: 1px;
-}
-
-.social__content:hover .social__tooltip-top {
-  opacity: 1;
-  top: -10rem;
-}
-
-
-/* Show menu */
-.show-menu {
-  bottom: var(--header-height);
-}
-
-/* Active menu link */
-.active-link {
-  color: var(--title-color);
-}
-
-/*========== HOME ==========*/
-.home {
-  position: relative;
-}
-
-.home__container {
-  gap: 3rem;
-}
-
-.home__data {
-  gap: .5rem;
-  text-align: center;
-}
-
-.home__img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  justify-self: center;
-  margin-bottom: var(--mb-1);
-}
-
-.home__title {
-  font-size: var(--h1-font-size);
-}
-
-.home__profession {
-  font-size: var(--normal-font-size);
-  margin-bottom: var(--mb-1);
-}
-
-.home__address {
-  gap: 1rem;
-}
-
-.home__information {
-  display: flex;
-  align-items: center;
-  font-size: var(--small-font-size);
-}
-
-.home__icon {
-  font-size: 1.2rem;
-  margin-right: .25rem;
-}
-
-.home__button-movil {
-  display: inline-block;
-  border: 2px solid var(--text-color);
-  color: var(--title-color);
-  padding: 1rem 2rem;
-  border-radius: .25rem;
-  transition: .3s;
-  font-weight: var(--font-medium);
-  margin-top: var(--mb-3);
-}
-
-.home__button-movil:hover {
-  background-color: var(--text-color);
-  color: var(--container-color);
-}
-
-/*========== SOCIAL ==========*/
-.social__container{
-  grid-template-columns: max-content;
-  gap: 1rem;
-}
-
-.social__link, .certificate__link {
-  display: inline-flex;
-  align-items: center;
-  font-size: var(--small-font-size);
-  color: var(--text-color);
-}
-
-.social__link:hover,
-.certificate__link:hover {
-  color: var(--title-color);
-}
-
-.social__icon{
-  font-size: 1.2rem;
-  margin-right: .25rem;
-}
-
-/*========== PROFILE ==========*/
-.profile__description{
-  text-align: center;
-}
-
-/*========== EDUCATION AND EXPERIENCE ==========*/
-.education__content,
-.experience__content{
-  display: flex;
-}
-
-.education__time,
-.experience__time{
-  padding-right: 1rem;
-}
-
-.education__rounder,
-.experience__rounder{
-  position: relative;
-  display: block;
-  width: 16px;
-  height: 16px;
-  background-color: var(--text-color-light);
-  border-radius: 50%;
-  margin-top: .25rem;
-}
-
-.education__line,
-.experience__line{
-  display: block;
-  width: 2px;
-  height: 110%;
-  background-color: var(--text-color-light);
-  transform: translate(7px, 0);
-}
-
-.education__data,
-.experience__data{
-  gap: .5rem;
-}
-
-.education__title,
-.experience__title{
-  font-size: var(--h3-font-size);
-}
-
-.education__studies,
-.experience__place{
-  font-size: var(--small-font-size);
-  color: var(--title-color);
-}
-
-.education__year{
-  font-size: var(--smaller-font-size);
-}
-
-/*========== SKILLS AND LANGUAGES ==========*/
-.skill__content,
-.language__content{
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.language__content{
-  gap: 0;
-}
-
-.skill__name,
-.language__name{
-  display: flex;
-  align-items: center;
-  margin-bottom: var(--mb-3);
-}
-
-.skill__circle,
-.language__circle{
-  display: inline-block;
-  width: 5px;
-  height: 5px;
-  background-color: var(--text-color);
-  border-radius: 50%;
-  margin-right: .75rem;
-}
-
-/*========== CERTIFICATES ==========*/
-.certificate__title{
-  font-size: var(--h3-font-size);
-  margin-bottom: var(--mb-1);
-}
-
-/*========== INTERESTS ==========*/
-.interest__container{
-  grid-template-columns: repeat(2, 1fr);
-  margin-top: var(--mb-2);
-}
-
-.interest__content{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.interest__icon{
-  font-size: 1.5rem;
-  color: var(--text-color-light);
-  margin-bottom: .25rem;
-}
-
-/* Scroll top */
-.scrolltop{
-  position: fixed;
-  right: 1rem;
-  bottom: -20%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: .3rem;
-  background-color: var(--container-color-alt);
-  border-radius: .4rem;
-  z-index: var(--z-tooltip);
-  transition: .4s;
-  visibility: hidden;
-}
-
-.scrolltop__icon{
-  font-size: 1.2rem;
-  color: var(--text-color);
-}
-
-.show-scroll{
-  visibility: visible;
-  bottom: 5rem;
-}
-
-/*========== MEDIA QUERIES ==========*/
-/* For small devices, menu two columns */
-@media screen and (max-width: 390px){
-    .nav__list{
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem .5rem;
-    }
-
-    .interest__name {
-        text-align: center;
-    }
-
-  .social__content:hover .social__tooltip-top {
-    top: -13em;
-  }
-}
-
-@media screen and (max-width: 968px) {
-  .nav__menu{
-    position: fixed;
-    bottom: -100%;
-    left: 0;
-    width: 100%;
-    padding: 2rem 1.5rem;
-    background-color: var(--body-color);
-    box-shadow: 0 1px 4px rgba(0,0,0,.1);
-    border-radius: 1rem 1rem 0 0;
-    z-index: var(--z-fixed);
-    transition: .3s;
-  }
-}
-
-/* Classes modified for large screen size */
-@media screen and (min-width: 968px){
-    body{
-    margin: 3rem 0;
-    }
-
-    .bd-container{
-    margin-left: auto;
-    margin-right: auto;
-    }
-
-    .l-header,
-    .scrolltop{
-    display: none;
-    }
-
-    .resume{
-    display: grid;
-    grid-template-columns: .5fr 1fr;
-    background-color: var(--container-color);
-    box-shadow: 0 0 8px rgba(13,12,12,.15);
-    }
-
-    .resume__left{
-    background-color: var(--container-color-alt);
-    }
-
-    .resume__left,
-    .resume__right{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 0 1.5rem;
-    }
-
-    .generate-pdf{
-        display: inline-block;
-    }
-
-    .section-title,
-    .profile__description{
-        text-align: initial;
-    }
-
-    .home__container{
-        gap: 1.5rem;
-    }
-
-    .home__button-movil{
-        display: none;
-    }
-
-    .language__content{
-        grid-template-columns: repeat(3, max-content);
-        column-gap: 3.5rem;
-    }
-
-    .interest__container{
-        grid-template-columns: repeat(3, max-content);
-        column-gap: 3.5rem;
-    }
-}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
+        <meta content="ie=edge" http-equiv="X-UA-Compatible">
+        <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
+        <link href="./assets/img/mfh.jpg" rel="icon">
+        <link href="./assets/css/style.css" rel="stylesheet">
+        <title>Muhammad Fauzul Hanif's Resume CV</title>
+    </head>
+    <body>
+        <header class="l-header" id="header">
+            <nav class="bd-container nav">
+                <a class="nav__logo" href="#home">F</a>
+                <!--menu-->
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <!--home-->
+                        <li class="nav__item">
+                            <a class="active-link nav__link" href="#home">
+                                <i class='bx bx-home nav__icon'></i>Home
+                            </a>
+                        </li>
+                        <!--home-->
+
+                        <!--profile-->
+                        <li class="nav__item">
+                            <a class="nav__link" href="#profile">
+                                <i class='bx bx-user nav__icon'></i>Profile
+                            </a>
+                        </li>
+                        <!--profile-->
+
+                        <!--socmed-->
+                        <li class="nav__item">
+                            <a class="nav__link" href="#socmed">
+                                <i class='bx bx-globe nav__icon'></i>Social Media
+                            </a>
+                        </li>
+                        <!--socmed-->
+
+                        <!--skill-->
+                        <li class="nav__item">
+                            <a class="nav__link" href="#skill">
+                                <i class='bx bx-receipt nav__icon'></i>Skills
+                            </a>
+                        </li>
+                        <!--skill-->
+
+                        <!--language-->
+                        <li class="nav__item">
+                            <a class="nav__link" href="#language">
+                                <i class='bx bx-world nav__icon'></i>Languages
+                            </a>
+                        </li>
+                        <!--language-->
+
+                        <!--education-->
+                        <li class="nav__item">
+                            <a class="nav__link" href="#education">
+                                <i class='bx bx-book nav__icon'></i>Education
+                            </a>
+                        </li>
+                        <!--education-->
+
+                        <!--experience-->
+                        <li class="nav__item">
+                            <a class="nav__link" href="#experience">
+                                <i class='bx bx-briefcase nav__icon'></i>Experiences
+                            </a>
+                        </li>
+                        <!--experience-->
+
+                        <!--certificate-->
+                        <li class="nav__item">
+                            <a class="nav__link" href="#certificate">
+                                <i class='bx bx-certification nav__icon'></i>Certificates
+                            </a>
+                        </li>
+                        <!--certificate-->
+
+                        <!--interest-->
+                        <li class="nav__item">
+                            <a class="nav__link" href="#interest">
+                                <i class='bx bx-heart nav__icon'></i>Interests
+                            </a>
+                        </li>
+                        <!--interest-->
+                    </ul>
+                </div>
+                <!--menu-->
+
+                <!--info-->
+                <div class="social__content ">
+                    <i class='bx bx-info-circle'></i>
+                    <div class="social__tooltip-top info">This is the website version of Muhammad Fauzul Hanif's CV Resume. By displaying personal data, background, education, experience, skills, language, interests and social media.</div>
+                </div>
+                <!--info-->
+
+                <!--category-->
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class='bx bx-category-alt'></i>
+                </div>
+                <!--category-->
+            </nav>
+        </header>
+
+        <main class="bd-container l-main">
+            <!-- All elements within this div, is generated in PDF -->
+            <div class="resume" id="area-cv">
+                <!--left-->
+                <div class="resume__left">
+                    <!--home-->
+                    <section class="home" id="home">
+                        <div class="bd-grid home__container section">
+                            <div class="bd-grid home__data">
+                                <img alt="Muhammad Fauzul Hanif's photo" class="home__img" src="./assets/img/mfh.jpg">
+                                <h1 class="home__title">MUHAMMAD <b>FAUZUL</b> HANIF</h1>
+                                <h3 class="home__profession">Software Developer</h3>
+
+                                <!-- Button to download your CV saved in the pdf folder. Available for mobile -->
+                                <div>
+                                    <a class="home__button-movil" download="" href="assets/pdf/Muhammad%20Fauzul%20Hanif's%20CV.pdf">Download CV</a>
+                                </div>
+                                <!-- Button to download your CV saved in the pdf folder. Available for mobile -->
+                            </div>
+
+                            <div class="bd-grid home__address">
+                                <span class="home__information">
+                                    <i class='bx bx-map home__icon'></i> Cikarang Barat, Kab. Bekasi, Jawa Barat, Indonesia.
+                                </span>
+                                <span class="home__information">
+                                    <i class='bx bx-envelope home__icon' ></i> efzedel16@outlook.com / efzedel16@outlook.co.id / efzedel16@gmail.com
+                                </span>
+                                <span class="home__information">
+                                    <i class='bx bx-phone home__icon'></i> (+62) 851-5885-1642
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Theme change button -->
+                        <i class='bx bx-moon change-theme' id="theme-button" title="Theme"></i>
+                        <!-- Theme change button -->
+
+                        <!-- Button to generate and download the pdf. Available for desktop. -->
+                        <i class='bx bx-download generate-pdf' title="Generate PDF" id="resume-button"></i>
+                        <!-- Button to generate and download the pdf. Available for desktop. -->
+                    </section>
+                    <!--home-->
+
+                    <!--profile-->
+                    <section class="section profile" id="profile">
+                        <h2 class="section-title">profile</h2>
+                        <p class="profile__description">I'm a person who wants to develop in the IT field. Cross majors from Multimedia to Software Engineering with commitment capital, continue to learn and practice.</p>
+                    </section>
+                    <!--profile-->
+
+                    <!--socmed-->
+                    <section class="social section" id="socmed">
+                        <h2 class="section-title">social media</h2>
+                        <div class="bd-grid social__container">
+                            <a class="social__link" href="#">
+                                <i class='bx bxl-discord social__icon'></i> Muhammad Fauzul Hanif
+                            </a>
+                            <a class="social__link" href="https://www.facebook.com/efzedel16" target="_blank">
+                                <i class='bx bxl-facebook social__icon'></i> Muhammad Fauzul Hanif
+                            </a>
+                            <a class="social__link" href="https://www.github.com/efzedel16" target="_blank">
+                                <i class='bx bxl-github social__icon'></i> @efzedel16
+                            </a>
+                            <a class="social__link" href="https://www.instagram.com/efzedel16" target="_blank">
+                                <i class='bx bxl-instagram social__icon'></i> @efzedel16
+                            </a>
+                            <a class="social__link" href="https://www.linkedin.com/in/efzedel16" target="_blank">
+                                <i class='bx bxl-linkedin social__icon'></i> Muhammad Fauzul Hanif
+                            </a>
+                            <a class="social__link" href="https://t.me/efzedel16" target="_blank">
+                                <i class='bx bxl-telegram social__icon'></i> (+62) 851-5885-1642 / @efzedel16
+                            </a>
+                            <a class="social__link" href="https://twitter.com/efzedel16" target="_blank">
+                                <i class='bx bxl-twitter social__icon'></i> Muhammad Fauzul Hanif
+                            </a>
+                            <a class="social__link" href="https://wa.me/6285158851642" target="_blank">
+                                <i class='bx bxl-whatsapp social__icon'></i> (+62) 851-5885-1642
+                            </a>
+                            <a class="social__link" href="https://efzedel16.github.io" target="_blank">
+                                <i class='bx bx-globe social__icon'></i> efzedel16.github.io
+                            </a>
+                        </div>
+                    </section>
+                    <!--socmed-->
+
+                    <!--skill-->
+                    <section class="skill section" id="skill">
+                        <h2 class="section-title">skills</h2>
+                        <div class="bd-grid skill__content">
+                            <!--left-->
+                            <ul class="skill__data">
+                                <li class="skill__name">
+                                    <span class="skill__circle"></span> HTML
+                                </li>
+                                <li class="skills__name">
+                                    <span class="skill__circle"></span> CSS
+                                </li>
+                            </ul>
+                            <!--left-->
+
+                            <!--right-->
+                            <ul class="skill__data">
+                                <li class="skill__name">
+                                    <span class="skill__circle"></span> SASS
+                                </li>
+                                <li class="skill__name">
+                                    <span class="skill__circle"></span> JavaScript
+                                </li>
+                            </ul>
+                            <!--right-->
+                        </div>
+                    </section>
+                    <!--skill-->
+
+                    <!--language-->
+                    <section class="language section" id="language">
+                        <h2 class="section-title">languages</h2>
+                        <div class="language__container">
+                            <ul class="bd-grid language__content">
+                                <li class="language__name">
+                                    <span class="language__circle"></span> Indonesia
+                                </li>
+                                <li class="language__name">
+                                    <span class="language__circle"></span> Sundanese
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                    <!--language-->
+                </div>
+                <!--left-->
+
+                <!--right-->
+                <div class="resume__right">
+                    <!--education-->
+                    <section class="education section" id="education">
+                        <h2 class="section-title">education</h2>
+                        <div class="bd-grid education__container">
+                            <!--SMK-->
+                            <div class="education__content">
+                                <div class="education__time">
+                                    <span class="education__rounder"></span>
+                                    <span class="education__line"></span>
+                                </div>
+                                <div class="bd-grid education__data">
+                                    <h3 class="education__title">Multimedia</h3>
+                                    <span class="education__studies">Telekomunikasi Telesandi Bekasi Vocational High School</span>
+                                    <span class="education__year">2017 - 2020</span>
+                                </div>
+                            </div>
+                            <!--SMK-->
+
+                            <!--SMP-->
+                            <div class="education__content">
+                                <div class="education__time">
+                                    <span class="education__rounder"></span>
+                                    <span class="education__line"></span>
+                                </div>
+                                <div class="bd-grid education__data">
+                                    <h3 class="education__title">-</h3>
+                                    <span class="education__studies">Nurul Fajri Integrated Islamic Junior High School</span>
+                                    <span class="education__year">2014 - 2017</span>
+                                </div>
+                            </div>
+                            <!--SMP-->
+
+                            <!--SD-->
+                            <div class="education__content">
+                                <div class="education__time">
+                                    <span class="education__rounder"></span>
+                                </div>
+                                <div class="education__data bd-grid">
+                                    <h3 class="education__title">-</h3>
+                                    <span class="education__studies">Yaa Bunayya Integrated Islamic Elementary School</span>
+                                    <span class="education__year">2008 - 2014</span>
+                                </div>
+                            </div>
+                            <!--SD-->
+                        </div>
+                    </section>
+                    <!--education-->
+
+                    <!--experience-->
+                    <section class="experience section" id="experience">
+                        <h2 class="section-title">experiences</h2>
+                        <div class="bd-grid experience__container">
+                            <!--oraganization of humanity-->
+                            <div class="experience__content">
+                                <div class="experience__time">
+                                    <span class="experience__rounder"></span>
+                                    <span class="experience__line"></span>
+                                </div>
+                                <div class="bd-grid experience__data">
+                                    <h3 class="experience__title">Humanitarian Organizations (Member)</h3>
+                                    <span class="experience__place">2019 - Now | Shabar Community</span>
+                                    <p class="experience__description">Conducting humanitarian activities such as compensation, raising donations for disaster victims, etc.</p>
+                                </div>
+                            </div>
+                            <!--oraganization of humanity-->
+
+                            <!--internship-->
+                            <div class="experience__content">
+                                <div class="experience__time">
+                                    <span class="experience__rounder"></span>
+                                    <span class="experience__line"></span>
+                                </div>
+                                <div class="bd-grid experience__data">
+                                    <h3 class="experience__title">Internship (Design Division)</h3>
+                                    <span class="experience__place">2018 - 2019 | M2E Radio</span>
+                                    <p class="experience__description">Design flyers for radio broadcasts, and sometimes help prepare materials, commercials, songs for broadcasts.</p>
+                                </div>
+                            </div>
+                            <!--internship-->
+
+                            <!--OSIS-->
+                            <div class="experience__content">
+                                <div class="experience__time">
+                                    <span class="experience__rounder"></span>
+                                </div>
+                                <div class="bd-grid experience__data">
+                                    <h3 class="experience__title">OSIS Junior High School (Religious Section)</h3>
+                                    <span class="experience__place">2015 - 2016 | Nurul Fajri</span>
+                                    <p class="experience__description">Carrying out acts of charity in accordance with religious norms.</p>
+                                </div>
+                            </div>
+                            <!--OSIS-->
+                        </div>
+                    </section>
+                    <!--experience-->
+
+                    <!--certificate-->
+                    <section class="certificate section" id="certificate">
+                        <h2 class="section-title">Certificates</h2>
+                        <div class="bd-grid certificate__container">
+                            <div class="certificate__content">
+                                <h3 class="certificate__title">Algorithms and Basic Programming</h3>
+                                <a class="certificate__description certificate__link"
+                                   href="https://www.codepolitan.com/c/UX0OLCP"
+                                   target="_blank">codepolitan.com/c/UX0OLCP</a>
+                            </div>
+
+                            <div class="certificate__content">
+                                <h3 class="certificate__title">Basic Programming 101</h3>
+                                <a class="certificate__description certificate__link"
+                                   href="https://www.dicoding.com/certificates/NVP7G48VRXR0"
+                                   target="_blank">dicoding.com/certificates/NVP7G48VRXR0</a>
+                            </div>
+
+                            <div class="certificate__content">
+                                <h3 class="certificate__title">Building a CodeIgniter-Based Online Shop Website</h3>
+                                <a class="certificate__description certificate__link"
+                                   href="https://www.codepolitan.com/c/JFTASQ0"
+                                   target="_blank">codepolitan.com/c/JFTASQ0</a>
+                            </div>
+
+                            <div class="certificate__content">
+                                <h3 class="certificate__title">Building a RESTful API with Laravel 6</h3>
+                                <a class="certificate__description certificate__link"
+                                   href="https://www.codepolitan.com/c/AP64XCK"
+                                   target="_blank">codepolitan.com/c/AP64XCK</a>
+                            </div>
+
+                            <div class="certificate__content">
+                                <h3 class="certificate__title">Creating a Culinary Web Using React.js</h3>
+                                <a class="certificate__description certificate__link"
+                                   href="https://www.codepolitan.com/c/TDBTECV"
+                                   target="_blank">codepolitan.com/c/TDBTECV</a>
+                            </div>
+
+                            <div class="certificate__content">
+                                <h3 class="certificate__title">Full Stack Web Development with Codeigniter Framework</h3>
+                                <a class="certificate__description certificate__link"
+                                   href="https://www.codepolitan.com/c/U1OBQ6J"
+                                   target="_blank">codepolitan.com/c/U1OBQ6J</a>
+                            </div>
+
+                            <div class="certificate__content">
+                                <h3 class="certificate__title">Laravel 6 Framework Basics</h3>
+                                <a class="certificate__description certificate__link"
+                                   href="https://www.codepolitan.com/c/ZG9W6BK"
+                                   target="_blank">codepolitan.com/c/ZG9W6BK</a>
+                            </div>
+
+                            <div class="certificate__content">
+                                <h3 class="certificate__title">Learn Azure Cloud Basics</h3>
+                                <a class="certificate__description certificate__link"
+                                   href="https://www.dicoding.com/certificates/GMEPJ4EV6Z3V"
+                                   target="_blank">dicoding.com/certificates/GMEPJ4EV6Z3V</a>
+                            </div>
+
+                            <div class="certificate__content">
+                                <h3 class="certificate__title">Learn Basic Data Visualization</h3>
+                                <a class="certificate__description certificate__link"
+                                   href="https://www.dicoding.com/certificates/72ZD2O2O6ZYW"
+                                   target="_blank">dicoding.com/certificates/72ZD2O2O6ZYW</a>
+                            </div>
+
+                            <div class="certificate__content">
+                                <h3 class="certificate__title">Learn Basic Web Programming</h3>
+                                <a class="certificate__description certificate__link"
+                                   href="https://www.dicoding.com/certificates/3JMZV6NONPN9"
+                                   target="_blank">dicoding.com/certificates/3JMZV6NONPN9</a>
+                            </div>
+
+                            <div class="certificate__content">
+                                <h3 class="certificate__title">Learn Docker for Beginners</h3>
+                                <a class="certificate__description certificate__link"
+                                   href="https://www.codepolitan.com/c/FZAN1YI"
+                                   target="_blank">codepolitan.com/c/FZAN1YI</a>
+                            </div>
+
+                            <div class="certificate__content">
+                                <h3 class="certificate__title">Learn GIT for Beginners</h3>
+                                <a class="certificate__description certificate__link"
+                                   href="https://www.codepolitan.com/c/MDTEGAW"
+                                   target="_blank">codepolitan.com/c/MDTEGAW</a>
+                            </div>
+
+                            <div class="certificate__content">
+                                <h3 class="certificate__title">Learn HTML and CSS Basics</h3>
+                                <a class="certificate__description certificate__link"
+                                   href="https://www.codepolitan.com/c/ZRDHOTV"
+                                   target="_blank">codepolitan.com/c/ZRDHOTV</a>
+                            </div>
+
+                            <div class="certificate__content">
+                                <h3 class="certificate__title">Learn JavaScript Async</h3>
+                                <a class="certificate__description certificate__link"
+                                   href="https://www.codepolitan.com/c/2GTSCJX"
+                                   target="_blank">codepolitan.com/c/2GTSCJX</a>
+                            </div>
+
+                            <div class="certificate__content">
+                                <h3 class="certificate__title">Learn MongoDB for Beginners</h3>
+                                <a class="certificate__description certificate__link"
+                                   href="https://www.codepolitan.com/c/ITMOCFR"
+                                   target="_blank">codepolitan.com/c/ITMOCFR</a>
+                            </div>
+
+                            <div class="certificate__content">
+                                <h3 class="certificate__title">Learn PHP Programming</h3>
+                                <a class="certificate__description certificate__link"
+                                   href="https://www.codepolitan.com/c/EKSAF6A"
+                                   target="_blank">codepolitan.com/c/EKSAF6A</a>
+                            </div>
+
+                            <div class="certificate__content">
+                                <h3 class="certificate__title">Learn SOLID Programming Principles</h3>
+                                <a class="certificate__description certificate__link"
+                                   href="https://www.dicoding.com/certificates/JMZVM40NRZN9"
+                                   target="_blank">dicoding.com/certificates/JMZVM40NRZN9</a>
+                            </div>
+
+                            <div class="certificate__content">
+                                <h3 class="certificate__title">Learning Golang for Beginners</h3>
+                                <a class="certificate__description certificate__link"
+                                   href="https://www.codepolitan.com/c/KSHFGVP"
+                                   target="_blank">codepolitan.com/c/KSHFGVP</a>
+                            </div>
+
+                            <div class="certificate__content">
+                                <h3 class="certificate__title">Learning to Make Cognitive Applications</h3>
+                                <a class="certificate__description certificate__link"
+                                   href="https://www.dicoding.com/certificates/KEXL438KRXG2"
+                                   target="_blank">dicoding.com/certificates/KEXL438KRXG2</a>
+                            </div>
+
+                            <div class="certificate__content">
+                                <h3 class="certificate__title">Programming Logic 101</h3>
+                                <a class="certificate__description certificate__link"
+                                   href="https://www.dicoding.com/certificates/NVP7G434OXR0"
+                                   target="_blank">dicoding.com/certificates/NVP7G434OXR0</a>
+                            </div>
+
+                            <div class="certificate__content">
+                                <h3 class="certificate__title">Python Programming for Beginners</h3>
+                                <a class="certificate__description certificate__link"
+                                   href="https://www.codepolitan.com/c/E4TYWPB"
+                                   target="_blank">codepolitan.com/c/E4TYWPB</a>
+                            </div>
+
+                            <div class="certificate__content">
+                                <h3 class="certificate__title">Quick Learning to Make React-Based Web App</h3>
+                                <a class="certificate__description certificate__link"
+                                   href="https://www.codepolitan.com/c/RDSW2XT"
+                                   target="_blank">codepolitan.com/c/RDSW2XT</a>
+                            </div>
+
+                            <div class="certificate__content">
+                                <h3 class="certificate__title">Starting a Career as a Software Developer</h3>
+                                <a class="certificate__description certificate__link"
+                                   href="https://www.dicoding.com/certificates/N9ZODYO7DPG5"
+                                   target="_blank">dicoding.com/certificates/N9ZODYO7DPG5</a>
+                            </div>
+
+                            <div class="certificate__content">
+                                <h3 class="certificate__title">Starting Programming With Dart</h3>
+                                <a class="certificate__description certificate__link"
+                                   href="https://www.dicoding.com/certificates/MEPJ5R6MWP3V"
+                                   target="_blank">dicoding.com/certificates/MEPJ5R6MWP3V</a>
+                            </div>
+
+                            <div class="certificate__content">
+                                <h3 class="certificate__title">Starting Programming With Python</h3>
+                                <a class="certificate__description certificate__link"
+                                   href="https://www.dicoding.com/certificates/53XEEQRQ9XRN"
+                                   target="_blank">dicoding.com/certificates/53XEEQRQ9XRN</a>
+                            </div>
+                        </div>
+                    </section>
+                    <!--certificate-->
+
+                    <!--interest-->
+                    <section class="interest section" id="interest">
+                        <h2 class="section-title">interests</h2>
+
+                        <div class="bd-grid interest__container">
+                            <div class="interest__content">
+                                <i class='bx bxl-blender interest__icon'></i>
+                                <span class="interest__name">3D Modelling</span>
+                            </div>
+                            <div class="interest__content">
+                                <i class='bx bx-laptop interest__icon'></i>
+                                <span class="interests__name">Coding</span>
+                            </div>
+                            <div class="interest__content">
+                                <i class='bx bx-joystick interest__icon'></i>
+                                <span class="interest__name">Game</span>
+                            </div>
+                            <div class="interest__content">
+                                <i class='bx bx-run interest__icon'></i>
+                                <span class="interest__name">Jogging</span>
+                            </div>
+                            <div class="interest__content">
+                                <i class='bx bxl-microsoft interest__icon'></i>
+                                <span class="interest__name">Microsoft Enthusiast</span>
+                            </div>
+                            <div class="interest__content">
+                                <i class='bx bx-movie-play interest__icon'></i>
+                                <span class="interest__name">Movie</span>
+                            </div>
+                            <div class="interest__content">
+                                <i class='bx bx-movie-play interest__icon'></i>
+                                <span class="interest__name">Movie</span>
+                            </div>
+                            <div class="interest__content">
+                                <i class='bx bx-headphone interest__icon'></i>
+                                <span class="interest__name">Music</span>
+                            </div>
+                            <div class="interest__content">
+                                <i class='bx bxl-windows interest__icon'></i>
+                                <span class="interest__name">Windows Insider User</span>
+                            </div>
+                        </div>
+                    </section>
+                    <!--interest-->
+                </div>
+                <!--right-->
+            </div>
+        </main>
+
+        <!--scroll top-->
+        <a href="#" class="scrolltop" id="scroll-top">
+            <i class='bx bx-up-arrow-alt scrolltop__icon'></i>
+        </a>
+        <!--scroll top-->
+
+
+        <!--html2pdf-->
+        <script src="assets/js/html2pdf.bundle.min.js"></script>
+        <!--html2pdf-->
+
+        <script src="assets/js/main.js"></script>
+    </body>
+</html>
