@@ -600,7 +600,7 @@ img {
     }
 
   .social__content:hover .social__tooltip-top {
-    top: -12rem;
+    top: -13em;
   }
 }
 
