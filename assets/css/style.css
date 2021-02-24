@@ -598,6 +598,10 @@ img {
     .interest__name {
         text-align: center;
     }
+
+  .social__content:hover .social__tooltip-top {
+    top: -12rem;
+  }
 }
 
 @media screen and (max-width: 968px) {
